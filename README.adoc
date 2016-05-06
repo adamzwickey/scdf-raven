@@ -70,7 +70,7 @@ Successfully targeted http://dataflow-server.local.pcfdev.io
 
 ---------------------------------------------------------------------
 
-.  Your shell should now be targeted correctly.  Test this by listing the current streams (which shoul dbe empty right now):
+.  Your shell should now be targeted correctly.  Test this by listing the current streams (which should be empty right now):
 +
 [source,bash]
 ---------------------------------------------------------------------
@@ -139,7 +139,7 @@ Created and deployed new stream 'test'
 
 ---------------------------------------------------------------------
 
-. In a separate terminal window check the status of the stream deployment using the CF CLI.  The app names will be suffixed with _test_, which is the name of your stream:
+. In a separate terminal window check the status of the stream deployment using the CF CLI.  The app names will be prefixed with _test_, which is the name of your stream:
 +
 [source,bash]
 ---------------------------------------------------------------------
