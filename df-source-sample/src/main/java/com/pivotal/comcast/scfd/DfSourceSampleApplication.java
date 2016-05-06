@@ -1,5 +1,7 @@
 package com.pivotal.comcast.scfd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +23,8 @@ public class DfSourceSampleApplication {
 		SpringApplication.run(DfSourceSampleApplication.class, args);
 	}
 
+	protected final Logger LOG = LoggerFactory.getLogger(DfSourceSampleApplication.class);
+
 	@Autowired Source _channels;
 
 	@RequestMapping("/event")
@@ -30,7 +34,7 @@ public class DfSourceSampleApplication {
 	}
 
 	void process(String event) {
-		System.out.println("processed message");
+		LOG.info("processed message");
 		_channels.output().send(MessageBuilder.createMessage(
 				event,
 				new MessageHeaders(Collections.singletonMap("Header1", "Sent from data microservice")))
