@@ -10,6 +10,9 @@
 
 **/*.log
 
+df-server/target
+df-server/target
+
 **/target/apidocs
 **/target/classes/
 **/target/*-javadoc.jar
