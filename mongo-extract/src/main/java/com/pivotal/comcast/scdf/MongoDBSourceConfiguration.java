@@ -53,7 +53,7 @@ public class MongoDBSourceConfiguration {
     @Bean
     public IntegrationFlow startFlow() throws Exception {
         return IntegrationFlows.from(mongoSource(),
-                c -> c.poller(Pollers.fixedRate(10000)))
+                c -> c.poller(Pollers.fixedRate(_config.getPollingRate())))
                 .split()
                 .transform(Transformers.toJson())
                 //.handle(System.out::println)
