@@ -25,7 +25,6 @@ import java.util.Arrays;
 
 
 @EnableBinding(Source.class)
-@Configuration
 @EnableConfigurationProperties(MongoDBProperties.class)
 @Import(ServerAddressConverterConfiguration.class)
 public class MongoDBSourceConfiguration {
@@ -33,7 +32,7 @@ public class MongoDBSourceConfiguration {
     @Autowired private MongoDBProperties _config;
 
     @Autowired
-    @Qualifier(value = Source.OUTPUT)
+    @Qualifier(Source.OUTPUT)
     private MessageChannel output;
 
     @Bean
@@ -70,7 +69,7 @@ public class MongoDBSourceConfiguration {
                 c -> c.poller(Pollers.fixedRate(10000)))
                 .split()
                 //.transform(Object::toString)
-                .handle(System.out::println)
+                //.handle(System.out::println)
                 .channel(output)
                 .get();
     }

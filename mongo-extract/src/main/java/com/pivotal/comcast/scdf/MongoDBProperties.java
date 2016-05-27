@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class MongoDBProperties {
 
     private String _user, _pwd, _db, _collection, _exp;
-    private ServerAddress[] _hostAddresses;
+    private ServerAddress[] _hostAddresses = { };
 
     @NotEmpty(message = "Query is required")
     public String getQuery() {
