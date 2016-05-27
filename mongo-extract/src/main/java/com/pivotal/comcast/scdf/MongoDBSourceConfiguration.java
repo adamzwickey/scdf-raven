@@ -54,7 +54,7 @@ public class MongoDBSourceConfiguration {
         return IntegrationFlows.from(mongoSource(),
                 c -> c.poller(Pollers.fixedRate(10000)))
                 .split()
-                //.transform(Object::toString)
+                .transform(Object::toString)
                 //.handle(System.out::println)
                 .channel(output)
                 .get();
