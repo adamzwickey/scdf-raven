@@ -19,6 +19,7 @@ import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.core.Pollers;
+import org.springframework.integration.dsl.support.Transformers;
 import org.springframework.integration.mongodb.inbound.MongoDbMessageSource;
 import org.springframework.messaging.MessageChannel;
 
@@ -54,7 +55,7 @@ public class MongoDBSourceConfiguration {
         return IntegrationFlows.from(mongoSource(),
                 c -> c.poller(Pollers.fixedRate(10000)))
                 .split()
-                .transform(Object::toString)
+                .transform(Transformers.toJson())
                 //.handle(System.out::println)
                 .channel(output)
                 .get();
