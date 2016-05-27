@@ -1,6 +1,5 @@
 package com.pivotal.comcast.scdf;
 
-import com.mongodb.ServerAddress;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -8,8 +7,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties
 public class MongoDBProperties {
 
-    private String _user, _pwd, _db, _collection, _exp;
-    private ServerAddress[] _hostAddresses = { };
+    private String _uri, _collection, _exp;
+    private long _pollingRate = 10000;
 
     @NotEmpty(message = "Query is required")
     public String getQuery() {
@@ -20,13 +19,12 @@ public class MongoDBProperties {
         _exp = query;
     }
 
-    @NotBlank(message = "Database name is required")
-    public String getDb() {
-        return _db;
+    public String getUri() {
+        return _uri;
     }
 
-    public void setDb(String db) {
-        _db = db;
+    public void setUri(String uri) {
+        _uri = uri;
     }
 
     public void setCollection(String collection) {
@@ -38,11 +36,11 @@ public class MongoDBProperties {
         return _collection;
     }
 
-    public ServerAddress[] getHostAddresses() {
-        return _hostAddresses;
+    public long getPollingRate() {
+        return _pollingRate;
     }
 
-    public void setHostAddresses(ServerAddress[] hostAddresses) {
-        _hostAddresses = hostAddresses;
+    public void setPollingRate(long pollingRate) {
+        _pollingRate = pollingRate;
     }
 }

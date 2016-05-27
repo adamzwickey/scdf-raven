@@ -1,6 +1,7 @@
 package com.pivotal.comcast.scdf;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.ServerAddress;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,9 @@ import org.springframework.integration.dsl.core.Pollers;
 import org.springframework.integration.mongodb.inbound.MongoDbMessageSource;
 import org.springframework.messaging.MessageChannel;
 
-import java.util.Arrays;
-
 
 @EnableBinding(Source.class)
 @EnableConfigurationProperties(MongoDBProperties.class)
-@Import(ServerAddressConverterConfiguration.class)
 public class MongoDBSourceConfiguration {
 
     @Autowired private MongoDBProperties _config;
@@ -38,19 +36,7 @@ public class MongoDBSourceConfiguration {
     @Bean
     protected MongoTemplate mongoTemplate() {
         try {
-            switch(_config.getHostAddresses().length) {
-
-                case 0:
-                    return new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(
-                            new ServerAddress(ServerAddress.defaultHost(), ServerAddress.defaultPort())), _config.getDb()));
-                case 1:
-                    return new MongoTemplate(new SimpleMongoDbFactory(
-                            new MongoClient(_config.getHostAddresses()[0]), _config.getDb()));
-                default:
-                    return new MongoTemplate(new SimpleMongoDbFactory(
-                            new MongoClient(Arrays.asList(_config.getHostAddresses())), _config.getDb()));
-            }
-
+            return new MongoTemplate(new SimpleMongoDbFactory(new MongoClientURI(_config.getUri())));
         } catch (Exception ex) {
             throw new BeanCreationException(ex.getMessage(), ex);
         }
