@@ -192,3 +192,12 @@ Connected, tailing logs for app test-sink-sample in org pcfdev-org / space pcfde
 2016-05-06T14:54:16.96-0400 [APP/0]      OUT 2016-05-06 18:54:16.959  INFO 15 --- [e-sample.test-1] c.p.c.scdf.DfSinkSampleApplication       :  timestamp=1462560856916
 
 ---------------------------------------------------------------------
+. If you are creating a stream that reads from mongodb, this is an example:
++
+[source,bash]
+---------------------------------------------------------------------
+dataflow:>stream create --name test-mongo --definition "mongo --uri=mongodb://.... --collection=testCollection --spring.cloud.stream.bindings.output.contentType=application/json | log" --deploy
+
+Created and deployed new stream 'test-mongo'
+
+---------------------------------------------------------------------
