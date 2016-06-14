@@ -85,7 +85,7 @@ dataflow:>stream list
 +
 [source,bash]
 ---------------------------------------------------------------------
-dataflow:>module import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module.properties --local TRUE
+dataflow:>app import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module.properties --local TRUE
 
 Successfully registered modules: [source.tcp, task.timestamp, source.http, sink.jdbc, sink.rabbit, source.rabbit, source.ftp, sink.gpfdist, processor.transform, source.sftp, processor.filter, source.file, sink.cassandra, processor.groovy-filter, sink.router, source.trigger, processor.splitter, sink.redis, source.load-generator, sink.file, source.time, source.twitterstream, sink.tcp, source.jdbc, sink.field-value-counter, sink.hdfs, processor.bridge, processor.pmml, processor.httpclient, sink.ftp, sink.log, sink.gemfire, sink.aggregate-counter, sink.throughput, source.jms, processor.scriptable-transform, sink.counter, sink.websocket, processor.groovy-transform]
 
@@ -95,7 +95,7 @@ Successfully registered modules: [source.tcp, task.timestamp, source.http, sink.
 +
 [source,bash]
 ---------------------------------------------------------------------
-dataflow:>module list
+dataflow:>app list
 ╔══════════════╤════════════════════╤═══════════════════╤═════════╗
 ║    source    │     processor      │       sink        │  task   ║
 ╠══════════════╪════════════════════╪═══════════════════╪═════════╣
@@ -126,7 +126,7 @@ dataflow:>module list
 +
 [source,bash]
 ---------------------------------------------------------------------
-dataflow:>module import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module_custom.properties --local TRUE
+dataflow:>app import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module_custom.properties --local TRUE
 Successfully registered modules: [sink.sink-sample, source.source-sample]
 ---------------------------------------------------------------------
 
