@@ -15,11 +15,12 @@
 $ cf login -a api.local.pcfdev.io --skip-ssl-validation -u admin -p admin
 ---------------------------------------------------------------------
 
-. Create the required RabbitMQ and Redis service instances
+. Create the required RabbitMQ and MySQL service instances
 +
 [source,bash]
 ---------------------------------------------------------------------
 $ cf create-service p-rabbitmq standard rabbit
+$ cf create-service p-mysql 512mb mysql
 ---------------------------------------------------------------------
 
 == Deploy Spring Cloud Dataflow Server
@@ -84,7 +85,7 @@ dataflow:>stream list
 +
 [source,bash]
 ---------------------------------------------------------------------
-dataflow:>app import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module.properties --local TRUE
+dataflow:>app import --uri http://bit.ly/stream-applications-rabbit-maven
 
 Successfully registered modules: [source.tcp, task.timestamp, source.http, sink.jdbc, sink.rabbit, source.rabbit, source.ftp, sink.gpfdist, processor.transform, source.sftp, processor.filter, source.file, sink.cassandra, processor.groovy-filter, sink.router, source.trigger, processor.splitter, sink.redis, source.load-generator, sink.file, source.time, source.twitterstream, sink.tcp, source.jdbc, sink.field-value-counter, sink.hdfs, processor.bridge, processor.pmml, processor.httpclient, sink.ftp, sink.log, sink.gemfire, sink.aggregate-counter, sink.throughput, source.jms, processor.scriptable-transform, sink.counter, sink.websocket, processor.groovy-transform]
 
@@ -125,7 +126,7 @@ dataflow:>app list
 +
 [source,bash]
 ---------------------------------------------------------------------
-dataflow:>app import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module_custom.properties --local TRUE
+dataflow:>app import --uri file://$LOCAL_FILESYSTEM_PATH/df-shell/module_custom.properties
 Successfully registered modules: [sink.sink-sample, source.source-sample]
 ---------------------------------------------------------------------
 
