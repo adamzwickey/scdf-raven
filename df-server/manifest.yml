@@ -11,12 +11,12 @@ applications:
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_ORG: pcfdev-org
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_SPACE: pcfdev-space
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_DOMAIN: local.pcfdev.io
-    SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_SERVICES: redis,rabbit,mysql
+    SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_SERVICES: rabbit,mysql
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_USERNAME: admin
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_PASSWORD: admin
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_SKIP_SSL_VALIDATION: true
     SPRING_CLOUD_DEPLOYER_CLOUDFOUNDRY_ENABLE_RANDOM_APP_NAME_PREFIX: false
+    SPRING_APPLICATION_JSON: "{\"spring.cloud.dataflow.applicationProperties.stream.spring.cloud.config.uri\":\"http://config-server.local.pcfdev.io\"}"
   services:
   - rabbit
-  - redis
   - mysql
