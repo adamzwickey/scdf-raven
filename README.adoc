@@ -20,7 +20,6 @@ $ cf login -a api.local.pcfdev.io --skip-ssl-validation -u admin -p admin
 [source,bash]
 ---------------------------------------------------------------------
 $ cf create-service p-rabbitmq standard rabbit
-$ cf create-service p-redis shared-vm redis
 ---------------------------------------------------------------------
 
 == Deploy Spring Cloud Dataflow Server
